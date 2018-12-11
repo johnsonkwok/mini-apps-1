@@ -1,0 +1,27 @@
+{
+  "name": "challenge_2",
+  "version": "1.0.0",
+  "description": "CSV Report Generator",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnsonkwok/hrsf107-mini-apps-1.git"
+  },
+  "author": "Johnson Kwok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnsonkwok/hrsf107-mini-apps-1/issues"
+  },
+  "homepage": "https://github.com/johnsonkwok/hrsf107-mini-apps-1#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.8"
+  }
+}
