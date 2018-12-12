@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/johnsonkwok/hrsf107-mini-apps-1#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4"
   },
   "devDependencies": {

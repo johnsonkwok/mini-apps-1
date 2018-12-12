@@ -5,13 +5,13 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname + '/client')));
 app.use(bodyParser.urlencoded({ extended: false }));
+// app.set('view engine', 'ejs');
 const port = 3000;
 
-app.post('/generate_csv', (req, res) => {
-  let body = JSON.parse(req.body.report);
+const convertJSONtoCSV = function(body) {
   const columnTitles = Object.keys(body).slice(0, -1).join(',');
   const csvReport = [columnTitles];
-
+  
   const createRow = function(person) {
     const info = [];
     for (let key in person) {
@@ -21,7 +21,7 @@ app.post('/generate_csv', (req, res) => {
     }
     return info.join(',');
   }
-
+  
   const addPeopleToReport = function(person) {
     csvReport.push(createRow(person));
     if (person.children.length === 0) {
@@ -34,8 +34,15 @@ app.post('/generate_csv', (req, res) => {
   };
   
   addPeopleToReport(body);
-  const csvReportStr = csvReport.join('/n');
-  res.send(csvReportStr);
+  return csvReport.join('<br>');
+};
+
+let totalCsv = '';
+app.post('/generate_csv', (req, res) => {
+  let body = JSON.parse(req.body.report);
+  const csv = convertJSONtoCSV(body);
+  totalCsv += csv;
+  res.render(__dirname + '/client/view.ejs', {totalCsv: totalCsv});
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}`));

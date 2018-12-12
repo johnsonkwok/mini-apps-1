@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSV Report Generator</title>
+  </head>
+  <body>
+    <h1>CSV Report Generator</h1>
+    <form action="/generate_csv" method="post">
+      <div>
+        <textarea name="report" id="report" cols="70" rows="15"></textarea>
+      </div>
+      <div>
+        <button type="submit">Submit data</button>
+      </div>
+      <div>
+        <%- totalCsv %>
+      </div>
+    </form>
+    <script src="./app.js"></script>
+  </body>
+</html>
