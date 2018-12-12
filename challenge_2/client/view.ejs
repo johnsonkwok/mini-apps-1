@@ -8,11 +8,11 @@
   </head>
   <body>
     <h1>CSV Report Generator</h1>
-    <form action="/generate_csv" method="post">
-      <div>
-        <textarea name="report" id="report" cols="70" rows="15"></textarea>
-      </div>
-      <div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="json">
+        <input type="file" name="json" id="file-picker" accept=".json">
+      </label>
+      <div id="submit">
         <button type="submit">Submit data</button>
       </div>
       <div>

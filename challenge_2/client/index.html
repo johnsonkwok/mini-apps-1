@@ -8,57 +8,11 @@
   </head>
   <body>
     <h1>CSV Report Generator</h1>
-    <form action="/generate_csv" method="post">
-      <div>
-        <textarea name="report" id="report" cols="70" rows="15">{
-          "firstName": "Joshie",
-          "lastName": "Wyattson",
-          "county": "San Mateo",
-          "city": "San Mateo",
-          "role": "Broker",
-          "sales": 1000000,
-          "children": [
-          {
-            "firstName": "Beth Jr.",
-            "lastName": "Johnson",
-            "county": "San Mateo",
-            "city": "Pacifica",
-            "role": "Manager",
-            "sales": 2900000,
-            "children": [
-              {
-                "firstName": "Smitty",
-                "lastName": "Won",
-                "county": "San Mateo",
-                "city": "Redwood City",
-                "role": "Sales Person",
-                "sales": 4800000,
-                "children": []
-              },
-              {
-                "firstName": "Allen",
-                "lastName": "Price",
-                "county": "San Mateo",
-                "city": "Burlingame",
-                "role": "Sales Person",
-                "sales": 2500000,
-                "children": []
-              }
-            ]
-          },
-          {
-            "firstName": "Beth",
-            "lastName": "Johnson",
-            "county": "San Francisco",
-            "city": "San Francisco",
-            "role": "Broker/Sales Person",
-            "sales": 7500000,
-            "children": []
-          }
-        ]
-      }</textarea>
-      </div>
-      <div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="json">
+        <input type="file" name="json" id="file-picker" accept=".json">
+      </label>
+      <div id="submit">
         <button type="submit">Submit data</button>
       </div>
     </form>
