@@ -1,0 +1,23 @@
+{
+  "name": "challenge_3",
+  "version": "1.0.0",
+  "description": "Multistep Checkout",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "compile": "babel client --out-dir public --presets=env,react --source-maps inline --watch"
+  },
+  "author": "Johnson Kwok",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react-app": "^3.1.2",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.8",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}
