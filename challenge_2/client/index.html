@@ -8,12 +8,13 @@
   </head>
   <body>
     <h1>CSV Report Generator</h1>
-    <form action="" method="post">
-      <textarea name="data" id="data" cols="30" rows="20"></textarea>
+    <form action="/generate_csv" method="post">
       <div>
+        <textarea name="report" id="report" cols="70" rows="15"></textarea>
         <button type="submit">Submit data</button>
       </div>
     </form>
+    <script src="./app.js"></script>
   </body>
 </html>
 
