@@ -6,4 +6,4 @@ const db = mysql.createConnection({
   database: 'checkout'
 });
 
-module.export = db;
+module.exports = db;
