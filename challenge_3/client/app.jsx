@@ -1,4 +1,5 @@
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +25,7 @@ class FormF1 extends React.Component {
   constructor(props) {
     super(props);
     this.handleF1Submit = this.handleF1Submit.bind(this);
+    this.handleF1Change = this.handleF1Change.bind(this);
     this.displayForm1 = this.displayForm1.bind(this);
     this.state = {
       viewForm1: true,
@@ -35,7 +37,15 @@ class FormF1 extends React.Component {
 
   handleF1Submit(e) {
     e.preventDefault();
-    console.log('phase 1...');
+    
+  }
+
+  handleF1Change() {
+    this.setState({
+      name: $('#name').val(),
+      email: $('#email').val(),
+      password: $('#password').val()
+    });
   }
 
   displayForm1() {
@@ -46,17 +56,17 @@ class FormF1 extends React.Component {
 
   render() {
     const form1 = (
-      <form onSubmit={this.handleF1Submit}>
+      <form onSubmit={this.handleF1Submit} onChange={this.handleF1Change}>
         <fieldset>
           <legend>Create Account</legend>
           <label>Name:
-            <input type="text" name="name" />
+            <input type="text" id="name" />
           </label><br />
           <label>Email:
-            <input type="email" name="email" />
+            <input type="email" id="email" />
           </label><br />
           <label>Password:
-            <input type="password" name="password" />
+            <input type="password" id="password" />
           </label><br />
           <input type="submit" value="Next" onClick={this.displayForm1} />
           </fieldset>
@@ -70,6 +80,7 @@ class FormF2 extends React.Component {
   constructor(props) {
     super(props);
     this.handleF2Submit = this.handleF2Submit.bind(this);
+    this.handleF2Change = this.handleF2Change.bind(this)
     this.displayForm2 = this.displayForm2.bind(this);
     this.state = {
       viewForm2: true,
@@ -87,6 +98,17 @@ class FormF2 extends React.Component {
     console.log('phase 2...');
   }
 
+  handleF2Change() {
+    this.setState({
+      address1: $('#address1').val(),
+      address2: $('#address2').val(),
+      city: $('#city').val(),
+      state: $('#state').val(),
+      zip: $('#zip').val(),
+      phone: $('#phone').val()
+    });
+  }
+
   displayForm2() {
     this.setState({
       viewForm2: !this.state.viewForm2
@@ -95,31 +117,32 @@ class FormF2 extends React.Component {
 
   render() {
     const form2 = (
-      <form onSubmit={this.handleF2Submit}>
+      <form onSubmit={this.handleF2Submit} onChange={this.handleF2Change}>
         <fieldset>
           <legend>Shipping Information</legend>
           <label>Address Line 1:
-            <input type="text" name="address1" />
+            <input type="text" id="address1" />
           </label><br />
           <label>Address Line 2:
-            <input type="text" name="address2" />
+            <input type="text" id="address2" />
           </label><br />
           <label>City:
-            <input type="text" name="city" />
+            <input type="text" id="city" />
           </label>
           <label>State:
-            <input type="text" name="state" placeholder="two-letter state code"/>
+            <input type="text" id="state" placeholder="two-letter state code"/>
           </label><br />
           <label>Zip Code:
-            <input type="number" name="zip" placeholder="five-digit zip code"/>
+            <input type="number" id="zip" placeholder="five-digit zip code"/>
           </label><br />
           <label>Phone Number:
-            <input type="number" name="state" placeholder="numbers only"/>
+            <input type="number" id="state" placeholder="numbers only"/>
           </label><br />
           <input type="submit" value="Next" onClick={this.displayForm2} />
           </fieldset>
       </form>
     );
+    console.log(this.state);
     return (this.state.viewForm2 ? form2 : <FormF3 />);
   }
 }
@@ -128,6 +151,7 @@ class FormF3 extends React.Component {
   constructor(props) {
     super(props);
     this.handleF3Submit = this.handleF3Submit.bind(this);
+    this.handleF3Change = this.handleF3Change.bind(this)
     this.displayForm3 = this.displayForm3.bind(this);
     this.state = {
       viewForm3: true,
@@ -143,6 +167,15 @@ class FormF3 extends React.Component {
     console.log('phase 2...');
   }
 
+  handleF3Change() {
+    this.setState({
+      ccNum: $('#ccNum').val(),
+      expiry: $('#expiry').val(),
+      cvv: $('#cvv').val(),
+      billingZip: $('#billingZip').val()
+    });
+  }
+
   displayForm3() {
     this.setState({
       viewForm3: !this.state.viewForm3
@@ -151,20 +184,20 @@ class FormF3 extends React.Component {
 
   render() {
     const form3 = (
-      <form onSubmit={this.handleF3Submit}>
+      <form onSubmit={this.handleF3Submit} onChange={this.handleF3Change}>
         <fieldset>
           <legend>Payment Information</legend>
           <label>Credit Card Number:
-            <input type="number" name="ccNum" placeholder="numbers only" />
+            <input type="number" id="ccNum" placeholder="numbers only" />
           </label><br />
           <label>Expiration Date:
-            <input type="text" name="expiry" placeholder="XX/XX" />
+            <input type="text" id="expiry" placeholder="XX/XX" />
           </label><br />
           <label>CVV Code:
-            <input type="number" name="cvv" />
+            <input type="number" id="cvv" />
           </label><br />
           <label>Billing Zip Code:
-            <input type="number" name="zip" placeholder="five-digit zip code"/>
+            <input type="number" id="billingZip" placeholder="five-digit zip code"/>
           </label><br />
           <input type="submit" value="Purchase" onClick={this.displayForm3} />
           </fieldset>
@@ -176,5 +209,5 @@ class FormF3 extends React.Component {
 
 
 
-ReactDOM.render(<App />, document.getElementById('home'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
