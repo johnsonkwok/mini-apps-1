@@ -38,7 +38,7 @@ class FormF1 extends React.Component {
   handleF1Submit(e) {
     e.preventDefault();
     $.ajax({
-      url: '/customers', 
+      url: '/account',
       type: 'POST',
       data: JSON.stringify(this.state), 
       contentType: 'application/json',
@@ -103,7 +103,7 @@ class FormF2 extends React.Component {
   handleF2Submit(e) {
     e.preventDefault();
     $.ajax({
-      url: '/customers', 
+      url: '/shipping', 
       type: 'POST',
       data: JSON.stringify(this.state), 
       contentType: 'application/json',
@@ -178,7 +178,7 @@ class FormF3 extends React.Component {
   handleF3Submit(e) {
     e.preventDefault();
     $.ajax({
-      url: '/customers', 
+      url: '/payment', 
       type: 'POST',
       data: JSON.stringify(this.state), 
       contentType: 'application/json',
