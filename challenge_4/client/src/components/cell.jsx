@@ -1,7 +1,11 @@
 import React from 'react';
 
 const cellStyle = {
-  width: '10px'
+  padding: "auto",
+  width: "14.3%",
+  height: "70px",
+  background: "white",
+  borderRadius: "50%"
 }
 
 const Cell = ({x, y}) => (

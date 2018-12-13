@@ -8,18 +8,17 @@ class Board extends React.Component {
 
   render() {
     const boardStyle = {
-      width: "50%",
+      width: "560px",
+      height: "480px",
       background: "#2945c9",
       whiteSpace: "pre-wrap"
     };
     return (
-      <div style={boardStyle}>
-        <table>
+        <table style={boardStyle}>
           <tbody>
             {[...Array(6)].map((row, i) => (<Row key={i} x={i} />))}
           </tbody>
         </table>
-      </div>
     );
   }
 }
