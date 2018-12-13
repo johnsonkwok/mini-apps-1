@@ -1,5 +1,4 @@
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -79,7 +78,7 @@ class FormF1 extends React.Component {
           </fieldset>
       </form>
     );
-    return (this.state.viewForm1 ? form1 : <FormF2 />);
+    return (this.state.viewForm1 ? form1 : <FormF2 account={this.state} />);
   }
 }
 
@@ -156,7 +155,8 @@ class FormF2 extends React.Component {
           </fieldset>
       </form>
     );
-    return (this.state.viewForm2 ? form2 : <FormF3 />);
+    const currentInfo = Object.assign({}, this.props.account, this.state);
+    return (this.state.viewForm2 ? form2 : <FormF3 info={currentInfo} />);
   }
 }
 
@@ -203,25 +203,59 @@ class FormF3 extends React.Component {
   }
 
   render() {
+    const {name, email, password, address1, address2, city, state, zip, phone} = this.props.info;
     const form3 = (
-      <form onChange={this.handleF3Change}>
-        <fieldset>
-          <legend>Payment Information</legend>
-          <label>Credit Card Number:
-            <input type="number" id="ccNum" placeholder="numbers only" />
-          </label><br />
-          <label>Expiration Date:
-            <input type="text" id="expiry" placeholder="XX/XX" />
-          </label><br />
-          <label>CVV Code:
-            <input type="number" id="cvv" />
-          </label><br />
-          <label>Billing Zip Code:
-            <input type="number" id="billingZip" placeholder="five-digit zip code"/>
-          </label><br />
-          <input type="button" value="Purchase" onClick={this.handleF3Submit} />
-          </fieldset>
-      </form>
+      <div>
+        <div>
+          <h2>Account Summary</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Address Line 1</th>
+                <th>Address Line 2</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Phone Number</th>
+              </tr>
+            </thead>  
+            <tbody>
+              <tr>
+                <td>{name}</td>
+                <td>{email}</td>
+                <td>{password}</td>
+                <td>{address1}</td>
+                <td>{address2}</td>
+                <td>{city}</td>
+                <td>{state}</td>
+                <td>{zip}</td>
+                <td>{phone}</td>
+              </tr>
+              </tbody>  
+          </table>
+        </div><br />
+        <form onChange={this.handleF3Change}>
+          <fieldset>
+            <legend>Payment Information</legend>
+            <label>Credit Card Number:
+              <input type="number" id="ccNum" placeholder="numbers only" />
+            </label><br />
+            <label>Expiration Date:
+              <input type="text" id="expiry" placeholder="XX/XX" />
+            </label><br />
+            <label>CVV Code:
+              <input type="number" id="cvv" />
+            </label><br />
+            <label>Billing Zip Code:
+              <input type="number" id="billingZip" placeholder="five-digit zip code"/>
+            </label><br />
+            <input type="button" value="Purchase" onClick={this.handleF3Submit} />
+            </fieldset>
+        </form>
+      </div>  
     );
     return (this.state.viewForm3 ? form3 : <App />);
   }

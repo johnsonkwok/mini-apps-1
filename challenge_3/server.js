@@ -19,7 +19,7 @@ app.post('/account', (req, res) => {
       res.sendStatus(501);  
     } else {
       currId = results.insertId;
-      res.sendStatus(201);
+      res.send(results);
     }
   });
 });
