@@ -37,7 +37,14 @@ class FormF1 extends React.Component {
 
   handleF1Submit(e) {
     e.preventDefault();
-    
+    $.ajax({
+      url: '/customers', 
+      type: 'POST',
+      data: JSON.stringify(this.state), 
+      contentType: 'application/json',
+      success: () => (console.log('Form 1 Submitted.'))
+    });
+    this.displayForm1();
   }
 
   handleF1Change() {
@@ -56,7 +63,7 @@ class FormF1 extends React.Component {
 
   render() {
     const form1 = (
-      <form onSubmit={this.handleF1Submit} onChange={this.handleF1Change}>
+      <form onChange={this.handleF1Change}>
         <fieldset>
           <legend>Create Account</legend>
           <label>Name:
@@ -68,7 +75,7 @@ class FormF1 extends React.Component {
           <label>Password:
             <input type="password" id="password" />
           </label><br />
-          <input type="submit" value="Next" onClick={this.displayForm1} />
+          <input type="button" value="Next" onClick={this.handleF1Submit} />
           </fieldset>
       </form>
     );
@@ -95,7 +102,14 @@ class FormF2 extends React.Component {
 
   handleF2Submit(e) {
     e.preventDefault();
-    console.log('phase 2...');
+    $.ajax({
+      url: '/customers', 
+      type: 'POST',
+      data: JSON.stringify(this.state), 
+      contentType: 'application/json',
+      success: () => (console.log('Form 2 Submitted.'))
+    });
+    this.displayForm2();
   }
 
   handleF2Change() {
@@ -117,7 +131,7 @@ class FormF2 extends React.Component {
 
   render() {
     const form2 = (
-      <form onSubmit={this.handleF2Submit} onChange={this.handleF2Change}>
+      <form onChange={this.handleF2Change}>
         <fieldset>
           <legend>Shipping Information</legend>
           <label>Address Line 1:
@@ -136,13 +150,12 @@ class FormF2 extends React.Component {
             <input type="number" id="zip" placeholder="five-digit zip code"/>
           </label><br />
           <label>Phone Number:
-            <input type="number" id="state" placeholder="numbers only"/>
+            <input type="number" id="phone" placeholder="numbers only"/>
           </label><br />
-          <input type="submit" value="Next" onClick={this.displayForm2} />
+          <input type="button" value="Next" onClick={this.handleF2Submit} />
           </fieldset>
       </form>
     );
-    console.log(this.state);
     return (this.state.viewForm2 ? form2 : <FormF3 />);
   }
 }
@@ -164,7 +177,14 @@ class FormF3 extends React.Component {
 
   handleF3Submit(e) {
     e.preventDefault();
-    console.log('phase 2...');
+    $.ajax({
+      url: '/customers', 
+      type: 'POST',
+      data: JSON.stringify(this.state), 
+      contentType: 'application/json',
+      success: () => (console.log('Form 3 Submitted.'))
+    });
+    this.displayForm3();
   }
 
   handleF3Change() {
@@ -184,7 +204,7 @@ class FormF3 extends React.Component {
 
   render() {
     const form3 = (
-      <form onSubmit={this.handleF3Submit} onChange={this.handleF3Change}>
+      <form onChange={this.handleF3Change}>
         <fieldset>
           <legend>Payment Information</legend>
           <label>Credit Card Number:
@@ -199,7 +219,7 @@ class FormF3 extends React.Component {
           <label>Billing Zip Code:
             <input type="number" id="billingZip" placeholder="five-digit zip code"/>
           </label><br />
-          <input type="submit" value="Purchase" onClick={this.displayForm3} />
+          <input type="button" value="Purchase" onClick={this.handleF3Submit} />
           </fieldset>
       </form>
     );
