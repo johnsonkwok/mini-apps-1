@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 const cellStyle = {
   padding: "auto",
@@ -8,8 +8,24 @@ const cellStyle = {
   borderRadius: "50%"
 }
 
-const Cell = ({x, y}) => (
-  <td style={cellStyle} x={x} y={y} ></td>
-);
+class Cell extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick({x, y}) {
+    return () => {
+      this.props.updBoard(x, y);
+    }
+  }
+
+  render() {
+    const {x, y} = this.props;
+    return (
+      <td style={cellStyle} data-x={x} data-y={y} onClick={this.handleClick(this.props)}></td>
+    );
+  }
+}
 
 export default Cell;

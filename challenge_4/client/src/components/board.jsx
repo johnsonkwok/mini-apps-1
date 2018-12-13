@@ -16,7 +16,7 @@ class Board extends React.Component {
     return (
         <table style={boardStyle}>
           <tbody>
-            {[...Array(6)].map((row, i) => (<Row key={i} x={i} />))}
+            {[...Array(6)].map((row, i) => (<Row key={i} x={i} updBoard={this.props.updBoard} />))}
           </tbody>
         </table>
     );
