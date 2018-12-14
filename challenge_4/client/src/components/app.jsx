@@ -14,23 +14,48 @@ class App extends React.Component {
       '5': [0, 0, 0, 0, 0, 0, 0],
     }
     this.updateBoard = this.updateBoard.bind(this);
+    this.detectGameEnd = this.detectGameEnd.bind(this);
   }
 
   updateBoard(x, y) {
     // let cell = document.querySelector(`[data-x='${x}'][data-y='${y}']`);
     let move = this.state.currPlayer ? 1 : 2;
-    const updatedRow = this.state[x].slice();
+    let currRow = 5;
+    while (this.state[currRow][y] !== 0 && currRow > 0) {
+      currRow--;
+    }
+
+    const updatedRow = this.state[currRow].slice();
     updatedRow[y] = move;
-    this.setState({
-      currPlayer: !this.state.currPlayer,
-      [x]: updatedRow
-    });
+    if (this.state['0'][y] === 0) {
+      this.setState({
+        currPlayer: !this.state.currPlayer,
+        [currRow]: updatedRow
+      });
+    }
+  }
+
+  detectGameEnd() {
+    if (detectHorizWin() || detectVertWin() || detectDiagWin()) {
+      
+    }
+    
+    function detectHorizWin() {
+
+    }
+
+    function detectVertWin() {
+
+    }
+
+    function detectDiagWin() {
+
+    }
   }
 
   render() {
-    console.log(this.state);
     return(
-      <Board updBoard={this.updateBoard} />
+      <Board updBoard={this.updateBoard} state={this.state} onChange={this.detectGameEnd} />
     );
   }
 }

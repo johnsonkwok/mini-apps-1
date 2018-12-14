@@ -13,10 +13,11 @@ class Board extends React.Component {
       background: "#2945c9",
       whiteSpace: "pre-wrap"
     };
+    const {state, updBoard} = this.props;
     return (
         <table style={boardStyle}>
           <tbody>
-            {[...Array(6)].map((row, i) => (<Row key={i} x={i} updBoard={this.props.updBoard} />))}
+            {[...Array(6)].map((row, i) => (<Row key={i} x={i} state={state} updBoard={updBoard} />))}
           </tbody>
         </table>
     );

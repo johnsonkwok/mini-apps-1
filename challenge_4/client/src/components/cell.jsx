@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
 
-const cellStyle = {
-  padding: "auto",
-  width: "14.3%",
-  height: "70px",
-  background: "white",
-  borderRadius: "50%"
-}
-
 class Cell extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +13,21 @@ class Cell extends Component {
   }
 
   render() {
-    const {x, y} = this.props;
+    const {x, y, state} = this.props;
+    const cellStyle = {
+      padding: "auto",
+      width: "14.3%",
+      height: "70px",
+      background: "white",
+      borderRadius: "50%"
+    }
+
+    if (state[x][y] === 1) {
+      cellStyle.background = 'red';
+    } else if (state[x][y] === 2) {
+      cellStyle.background = 'yellow';
+    }
+
     return (
       <td style={cellStyle} data-x={x} data-y={y} onClick={this.handleClick(this.props)}></td>
     );
